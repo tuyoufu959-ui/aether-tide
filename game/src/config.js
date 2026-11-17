@@ -1,0 +1,9 @@
+export const WIDTH = 1280;
+export const HEIGHT = 800;
+export const FIELD = { left: 58, right: 1222, top: 265, bottom: 659 };
+export const GOAL = 8;
+export const RUN_SECONDS = 60;
+export const DASH_COOLDOWN = 2.6;
+export const PULSE_COOLDOWN = 8;
+export const COLORS = { mint: '#9af7dc', ivory: '#eef2e8', coral: '#ff9686', muted: '#879da9' };
+export const SECTORS = ['QUIET REACH', 'THE PALE CURRENT', 'SHADE WATER', 'THE LAST APPROACH'];

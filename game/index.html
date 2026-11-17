@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AETHER TIDE — The Last Light Run. Recover eight Light Cells before the tide takes everything.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%238df5de' d='M16 2 28 28 16 22 4 28Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <title>AETHER TIDE — The Last Light Run</title>
+</head>
+<body>
+  <main id="flight-deck" aria-label="Aether Tide arcade game">
+    <canvas id="space" aria-label="Recovery ship, Light Cells and pursuing Shades" width="1280" height="800"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✧</span><span>AETHER <b>TIDE</b></span><span class="edition">RECOVERY DIVISION / 08</span></div>
+      <button id="mute" class="quiet-button" aria-label="Mute sound" aria-pressed="false">SOUND <span id="sound-state">ON</span><span class="sound-bars" aria-hidden="true">▂▆▃</span></button>
+    </header>
+
+    <section id="title-screen" class="screen title-screen" aria-labelledby="game-title">
+      <div class="eyebrow"><span class="status-light"></span> ONE SHIP. ONE LAST CHANCE.</div>
+      <h1 id="game-title">AETHER<br><em>TIDE</em><span class="title-star" aria-hidden="true">✧</span></h1>
+      <div class="subtitle">THE LAST LIGHT RUN</div>
+      <p class="intro">The stars are going dark.<br>Bring a little light back.</p>
+      <div class="mission"><span class="mission-number">08</span><p>RECOVER LIGHT CELLS<br><span>60 seconds before the tide arrives.</span></p></div>
+      <div class="launch-row"><button id="begin" class="primary-button">BEGIN RUN <span aria-hidden="true">↗</span></button><span class="enter-hint">or press <kbd>ENTER</kbd></span></div>
+      <div class="personal-best">PERSONAL BEST <span id="title-best">000000</span></div>
+      <div class="orbit-note"><span class="tiny-cross">+</span><span>VESSEL 01 / THE LANTERN<br><b>Hope is a direction.</b></span></div>
+      <div class="title-controls">
+        <div><span class="control-icon">W A S D</span><strong>PILOT</strong><span>Arrows or hold mouse</span></div>
+        <div><span class="control-icon">SPACE</span><strong>PHASE DASH</strong><span>Slip through the Shades</span></div>
+        <div><span class="control-icon">E</span><strong>SONIC PULSE</strong><span>Stun nearby pursuers</span></div>
+      </div>
+    </section>
+
+    <section id="hud" class="hud" aria-label="Flight instruments" hidden>
+      <div class="instruments">
+        <div class="cell-counter"><span class="label">LIGHT RECOVERED</span><strong><span id="cells-value">00</span><small> / 08</small></strong><div id="cell-pips" class="cell-pips" aria-hidden="true"></div></div>
+        <div class="hull-counter"><span class="label">HULL INTEGRITY</span><div id="hull-value" class="hull-bars" aria-label="3 hull remaining"></div></div>
+        <div class="score-counter"><span class="label">RUN SCORE</span><strong id="score-value">000000</strong></div>
+        <div class="timer-counter"><span class="label">TIDE ARRIVES IN</span><strong id="time-value">60<small>.0</small></strong></div>
+      </div>
+      <div class="sector"><span class="status-light"></span><span id="sector-value">SECTOR 01 / QUIET REACH</span></div>
+      <div id="message" class="flight-message" role="status">FOLLOW THE LIGHT</div>
+      <div id="combo" class="combo" hidden></div>
+      <div class="ability-bar">
+        <div class="ability"><kbd>SPACE</kbd><div><span>PHASE DASH</span><strong id="dash-state">READY</strong><div class="charge-track"><i id="dash-charge"></i></div></div></div>
+        <p>RECOVER 8 CELLS. <span>KEEP THE LIGHT ALIVE.</span></p>
+        <div class="ability pulse-ability"><kbd>E</kbd><div><span>SONIC PULSE</span><strong id="pulse-state">READY</strong><div class="charge-track"><i id="pulse-charge"></i></div></div></div>
+      </div>
+      <div id="pause-note" class="pause-note" hidden>FLIGHT PAUSED<span>Return to the flight deck to continue.</span></div>
+    </section>
+
+    <section id="end-screen" class="screen end-screen" aria-labelledby="end-title" hidden>
+      <div class="end-card">
+        <span class="end-sigil" id="end-sigil" aria-hidden="true">✧</span>
+        <div class="eyebrow" id="end-eyebrow">TRANSMISSION RECEIVED / MISSION COMPLETE</div>
+        <h2 id="end-title">YOU BROUGHT<br>THE LIGHT HOME.</h2>
+        <p id="end-description">Eight small suns. A whole new dawn.</p>
+        <div class="end-stats"><div><span class="label">FINAL SCORE</span><strong id="end-score">000000</strong></div><div><span class="label">LIGHT CELLS</span><strong id="end-cells">08<small> / 08</small></strong></div><div><span class="label">PERSONAL BEST</span><strong id="end-best">000000</strong></div></div>
+        <div id="score-breakdown" class="score-breakdown"></div>
+        <button id="restart" class="primary-button">FLY AGAIN <span aria-hidden="true">↗</span></button>
+        <div class="restart-hint">PRESS <kbd>ENTER</kbd> FOR ANOTHER RUN</div>
+      </div>
+    </section>
+    <footer class="deck-footer"><span>THE LAST LIGHT RUN</span><span id="footer-message">AN OFFLINE ARCADE EXPEDITION</span><span class="footer-coordinate">AETHER / 60:08</span></footer>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
